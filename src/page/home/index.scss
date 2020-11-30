@@ -1,16 +1,11 @@
 @use "node_modules/@splidejs/splide/dist/css/splide.min.css";
-@use "spacing";
-@use "typography";
-@use "button";
-@use "color";
-@use "navbar";
-@use "footer";
-@use "general";
-@use "mixins";
+@use "node_modules/normalize.css/normalize.css";
 @use "sass:color" as sassColor;
-@use "breakpoint";
-@use "layout";
-@use "icons";
+
+@use "../../lib/scss/spacing";
+@use "../../lib/scss/typography";
+@use "../../lib/scss/icons";
+@use "../../lib/scss/general";
 
 
 

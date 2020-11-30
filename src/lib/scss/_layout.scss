@@ -1,0 +1,16 @@
+@use "spacing";
+@use "breakpoint";
+
+
+/* Contents
+ * 1. Mixins
+ * 2. Rules
+ */
+
+
+/* 0. Variables */
+$section-spacing     : spacing.$b20;
+$section-spacing--sm : spacing.$b30;
+$section-spacing--lg : spacing.$b50;
+
+$subsection-spacing : spacing.$b6;

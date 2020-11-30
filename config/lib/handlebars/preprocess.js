@@ -11,17 +11,27 @@ function register_as_handlebars_partial
   , templatesDir
   , absolutePath
   ) {
-    const partialAsString =
-      loaderContext.fs.readFileSync(absolutePath, 'utf8')
+    const dirname =
+      path.dirname(path.relative(templatesDir, absolutePath))
+    const basename =
+      path.basename
+        ( path.relative(templatesDir, absolutePath)
+        , '.handlebars.html'
+        )
 
-    const pathObject =
-      path.parse(path.relative(templatesDir, absolutePath))
 
-    const relativePath = path.join(pathObject.dir, pathObject.name)
+    const relativePath = path.join(dirname, basename)
 
+
+    const partialAsString
+      = loaderContext.fs.readFileSync(absolutePath, 'utf8')
     const partialName = relativePath.split(path.sep).join('/')
 
+
     handlebars.registerPartial({[partialName]: partialAsString})
+
+    
+    loaderContext.addDependency(absolutePath)
   }
 
 
@@ -113,43 +123,57 @@ function register_handlebars_partials_in_dir
 function preprocess_handlebars
   ( { content
     , context 
-    , templatesDir
-    , handlersDir
+    , templatesDirs
+    , handlersDirs
     }
   ) {
     const queryOptions = LoaderUtils.parseQuery(this.resourceQuery)
 
 
-    const appliedContext
-      =  { title: queryOptions.title || context.title || 'No Title'
-         , nameOfContentPartial
-             :  queryOptions.nameOfContentPartial
-             || context.nameOfContentPartial
-             || 'NoContent'
-         }
+    const title
+      =  queryOptions.title
+      || (context && context.title ? context.title : 'No Title')
+
+    const nameOfContentPartial
+      =  queryOptions.nameOfContentPartial
+      || ( context && context.nameOfContentPartial
+             ? context.nameOfContentPartial
+             : 'NoContent'
+         )
 
 
-    const appliedTemplatesDir
-      =  queryOptions.templatesDir
-      || templatesDir
-      || this.context
-      || this.rootContext
-      || ''
+    const appliedContext = {title, nameOfContentPartial}
 
 
-    const appliedHandlersDir
-      =  queryOptions.handlersDir
-      || handlersDir
-      || this.context
-      || this.rootContext
-      || appliedTemplatesDir
+    const appliedTemplatesDirs
+      = new Set
+          ( queryOptions.templatesDir
+              ? [ ... templatesDirs || []
+                , queryOptions.templatesDir
+                ]
+              : templatesDirs || []
+          )
+
+
+    const appliedHandlersDirs
+      = new Set
+          ( queryOptions.handlersDir
+              ? [ ... handlersDirs || []
+                , queryOptions.handlersDir
+                ]
+              : handlersDirs || []
+          )
   
 
     try {
-      register_handlebars_partials_in_dir
-        ( this
-        , appliedTemplatesDir
-        , Handlebars
+      appliedTemplatesDirs.forEach
+        ( dir => (
+            register_handlebars_partials_in_dir
+              ( this
+              , dir
+              , Handlebars
+              )
+          )
         )
     } catch (e) {
       this.emitError(e)

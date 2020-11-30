@@ -11,6 +11,7 @@ const webpackModule =
       [ { test: /\.s?css$/i
         , use:
             [ 'style-loader'
+
             , { loader  : 'css-loader'
               , options : { sourceMap: true }
               }
@@ -22,6 +23,14 @@ const webpackModule =
                     { config: ProjectStructure.POST_CSS_CONFIG_PATH
                     }
                   }
+              }
+
+            , { loader  : 'resolve-url-loader'
+              , options : { sourceMap : true}
+              }
+
+            , { loader  : 'sass-loader'
+              , options : {sourceMap : true}
               }
             ]
         }

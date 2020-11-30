@@ -1,0 +1,51 @@
+
+@use "spacing";
+
+
+
+/* Contents
+ * 0. Variables
+ * 0. Mixins
+ * 0. styles
+ */
+
+
+
+/* 0. Variables */
+
+$subsection-margins--sm    : spacing.$b8;
+
+
+
+/* 0. Mixins */
+
+@mixin subsection {
+  padding                  : 0 $subsection-margins--sm;
+  margin-bottom            : spacing.$b12;
+}
+
+
+
+/* 0. Styles */
+
+.page-heading {
+  padding                  : 0 $subsection-margins--sm;
+}
+
+
+
+.section-heading {
+  padding                  : 0 $subsection-margins--sm;
+}
+
+
+
+.subsection {
+  @include                 subsection;
+}
+
+
+
+.subsection__content {
+  margin-bottom            : spacing.$b12;
+}

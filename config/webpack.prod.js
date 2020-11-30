@@ -19,6 +19,7 @@ const webpackModule =
                     }
                   }
               }
+            , 'resolve-url-loader'
             , 'sass-loader'
             ]
         }
