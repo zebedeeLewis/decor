@@ -30,41 +30,48 @@ $h1-line-height      : spacing.$b8;
 }
 
 
-@mixin h1 {
-  font-size                : $font-size + spacing.$b6;
+@mixin h {
   font-weight              : $font-weight-bold;
-  line-height              : spacing.$b8;
   margin-top               : 0;
+  color                    : black;
+}
+
+
+@mixin h1 {
+  @include                 h;
+
+  font-size                : $font-size + spacing.$b6;
+  line-height              : spacing.$b8;
   margin-bottom            : spacing.$b9; 
 }
 
 
 
 @mixin h2 {
+  @include                 h;
+
   font-size                : $font-size + spacing.$b3;
-  font-weight              : $font-weight-bold;
   line-height              : spacing.$b7;
-  margin-top               : 0;
   margin-bottom            : spacing.$b7; 
 }
 
 
 
 @mixin h3 {
+  @include                 h;
+
   font-size                : $font-size + spacing.$b1;
-  font-weight              : $font-weight-bold;
   line-height              : spacing.$b5;
-  margin-top               : 0;
   margin-bottom            : spacing.$b5; 
 }
 
 
 
 @mixin h4 {
+  @include                 h;
+
   font-size                : $font-size;
-  font-weight              : $font-weight-bold;
   line-height              : spacing.$b5;
-  margin-top               : 0;
   margin-bottom            : spacing.$b5; 
 }
 

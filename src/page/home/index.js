@@ -1,3 +1,18 @@
 import './index.scss'
+import * as Navbar from "../../lib/js/Navbar"
 
-console.log(`JS is working...'}`)
+
+function init
+  ( window
+  ) {
+    const document = window.document
+
+    document.addEventListener
+      ( 'DOMContentLoaded'
+      , () => Navbar.init(window, '#navbar')
+      )
+  }
+
+
+
+init(window)
