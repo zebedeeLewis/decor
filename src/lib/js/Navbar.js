@@ -19,6 +19,21 @@ const ToggledClass
 
 
 /**
+ * Represents the classes that are applied to the Navbar scrim
+ * DOMElement for each possible ToggleState.
+ *
+ * @readonly
+ */
+const ToggledScrimClass
+  = Object.freeze
+      ( { On  : 'scrim--active'
+        , Off : 'scrim'
+        }
+      )
+
+
+
+/**
  * Represents the possible toggle state of a single
  * Navbar.
  *
@@ -137,25 +152,74 @@ function display_navbar_hamburger
 
 
 /**
+ * display navbar scrim (i.e. the translucent background shown when
+ * the navbar is toggled).
+ *
+ * @param {HTMLElement} scrimElement
+ *
+ * @return {HTMLElement}
+ */
+function show_scrim
+  ( scrimElement
+  ) {
+    scrimElement.classList.add( ToggledScrimClass.On )
+    scrimElement.classList.remove( ToggledScrimClass.Off )
+
+    return scrimElement
+  }
+
+
+
+/**
+ * hide navbar scrim (i.e. the translucent background shown when
+ * the navbar is toggled).
+ *
+ * @param {HTMLElement} scrimElement
+ *
+ * @return {HTMLElement}
+ */
+function hide_scrim
+  ( scrimElement
+  ) {
+    scrimElement.classList.add( ToggledScrimClass.Off )
+    scrimElement.classList.remove( ToggledScrimClass.On )
+
+    return scrimElement
+  }
+
+
+
+/**
  * Sync the DOM element of the given Navbar Model with it's
  * Model representation.
  *
+ * @param {HTMLElement} window
  * @param {Model} navbarModel
  *
  * @return {Model}
  */
 export function sync_dom_representation
-  ( navbarModel
+  ( window
+  , navbarModel
   ) {
+    const document = window.document
+
+
     const navbarElement = navbarModel.element
+    const scrimElement
+      =  document.querySelector('.' + ToggledScrimClass.Off)
+      || document.querySelector('.' + ToggledScrimClass.On)
+
 
     switch (navbarModel.toggled) {
       case ToggledState.On:
         display_nav_items(navbarElement)
+        if( scrimElement ) { show_scrim(scrimElement) }
         break
 
       case ToggledState.Off:
         display_navbar_hamburger(navbarElement)
+        if( scrimElement ) { hide_scrim(scrimElement) }
         break
     }
 
@@ -186,7 +250,7 @@ export function setup_handlers
       ( 'click'
       , () => {
           navbarModel.toggled = ToggledState.On
-          sync_dom_representation(navbarModel)
+          sync_dom_representation(window, navbarModel)
         }
       )
 
@@ -198,7 +262,7 @@ export function setup_handlers
       ( 'click'
       , () => {
           navbarModel.toggled = ToggledState.Off
-          sync_dom_representation(navbarModel)
+          sync_dom_representation(window, navbarModel)
         }
       )
 
@@ -237,7 +301,7 @@ export function init
 
     const navbarModel = create(navbarElement)
 
-    sync_dom_representation(navbarModel)
+    sync_dom_representation(window, navbarModel)
     setup_handlers(window, navbarModel)
 
 

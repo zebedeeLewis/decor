@@ -5,14 +5,23 @@
 
 
 $nav-item-vertical-spacing : spacing.$b3;
+$panel-margins--sm    : spacing.$b8;
 
 
 
 @mixin navbar {
+  position                 : absolute;
+  width                    : 100%;
+  z-index                  : 2;
+}
+
+
+
+@mixin navbar-inner {
   padding                  : spacing.$b12
-                             general.$subsection-margins--sm
+                             $panel-margins--sm
                              spacing.$b8
-                             general.$subsection-margins--sm;
+                             $panel-margins--sm;
 }
 
 
@@ -22,9 +31,22 @@ $nav-item-vertical-spacing : spacing.$b3;
 }
 
 
+.navbar__closed {
+  @include                 navbar-inner;
+
+  display                  : flex;
+}
+
+
+.navbar__open {
+  @include                 navbar-inner;
+
+  background-color         : white;
+}
+
 
 .navbar .navbar__closed {
-  display                  : block;
+  display                  : flex;
 }
 
 
@@ -71,6 +93,9 @@ $nav-item-vertical-spacing : spacing.$b3;
 
 .navbar-logo {
   @include                 nav-item;
+
+  margin-left              : auto;
+  margin-right             : auto;
 }
 
 

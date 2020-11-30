@@ -1,14 +1,36 @@
-{{> navbar }}
 <main class="main">
-  <h1 class="page-heading">Room</h1>
+  <div class="image-slides slide-container">
+    {{> navbar }}
 
-  <section class="section">
-    <h2 class="section-heading">About Us</h2>
+    <div
+      class="image-slide slide--active"
+      data-img-src="./image/"
+      data-slide-index=
+    ></div>
 
-    <section class="subsection">
-      <h3>Discover innovative ways to decorate</h3>
+    <div
+      class="image-slide"
+      data-img-src="./image/"
+      data-slide-index=
+    ></div>
+
+    <div
+      class="image-slide"
+      data-img-src="./image/"
+      data-slide-index=
+    ></div>
+  </div>
+
+  <div class="text-slides slide-container">
+    <div
+      class="panel slide--active"
+      data-slide-index=
+    >
+      <span class="panel__tagline">
+        Discover innovative ways to decorate
+      </span>
       
-      <div class="subsection__content">
+      <div class="panel__content">
         <p>
         We provide unmatched quality, comfort, and style for property
         owners across the country. Our experts combine form and function
@@ -21,12 +43,17 @@
       <a class="simple-button" href="#">
         Shop now <span class="icon-arrow"></span>
       </a>
-    </section>
+    </div>
 
-    <section class="subsection">
-      <h3>We are available all across the globe</h3>
+    <div
+      class="panel slide"
+      data-slide-index=
+    >
+      <span class="panel__tagline">
+        We are available all across the globe
+      </span>
       
-      <div class="subsection__content">
+      <div class="panel__content">
         <p>
         With stores all over the world, it's easy for you to find
         furniture for your home or place of business. Locally, we’re in
@@ -39,12 +66,17 @@
       <a class="simple-button" href="#">
         Shop now <span class="icon-arrow"></span>
       </a>
-    </section>
+    </div>
       
-    <section class="subsection">
-      <h3>Manufactured with the best materials</h3>
+    <div
+      class="panel slide"
+      data-slide-index=
+    >
+      <span class="panel__tagline">
+        Manufactured with the best materials
+      </span>
       
-      <div class="subsection__content">
+      <div class="panel__content">
         <p>
         Our modern furniture store provide a high level of quality. Our
         company has invested in advanced technology to ensure that every
@@ -57,13 +89,15 @@
       <a class="simple-button" href="#">
         Shop now <span class="icon-arrow"></span>
       </a>
-    </section>
-  </section>
+    </div>
+  </div>
 
-  <section class="section">
-    <h2 class="section-heading">About our furniture</h2>
+  <div class="image-panel--1"></div>
+
+  <div class="panel">
+    <span class="panel__tagline">About our furniture</span>
     
-    <div class="subsection">
+    <div class="panel__content">
       <p>
       Our multifunctional collection blends design and function to
       suit your individual taste. Make each room unique, or pick a
@@ -73,5 +107,7 @@
       are available to help you create your dream space.
       </p>
     </div>
-  </section>
+  </div>
+
+  <div class="image-panel--2"></div>
 </main>

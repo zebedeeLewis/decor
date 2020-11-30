@@ -2,6 +2,7 @@
 @use "node_modules/normalize.css/normalize.css";
 @use "sass:color" as sassColor;
 
+@use "../../lib/scss/mixins";
 @use "../../lib/scss/spacing";
 @use "../../lib/scss/typography";
 @use "../../lib/scss/icons";
@@ -18,9 +19,117 @@
 
 
 
-/* 0. Variables */
+$panel-margins--sm    : spacing.$b8;
 
 
 
-/* 0. Mixins */
+/* 0. Styles */
+.image-slides {
+  margin-bottom            : spacing.$b12;
+}
 
+
+.slide-container {
+  position                 : relative;
+}
+
+
+
+@mixin slide {
+  display                  : none;
+}
+
+
+.slide {
+  @include                 slide;
+}
+
+
+
+.image-slide {
+  @include                 slide;
+  @include                 mixins.aspect-ratio--square;
+
+  background-image         : url(./image/mobile/hero_1.jpg);
+}
+
+
+
+.slide--active {
+  @include                 slide;
+
+  display                  : block;
+  background-size          : cover;
+}
+
+
+
+.panel {
+  padding                  : 0 $panel-margins--sm;
+  margin-bottom            : spacing.$b12;
+}
+
+
+
+.panel__tagline {
+  @include                 typography.h2;
+}
+
+
+
+.panel__content {
+  margin-bottom            : spacing.$b12;
+}
+
+
+.display-none {
+  display                   : none;
+}
+
+
+@mixin image-panel {
+  @include                 mixins.aspect-ratio--square;
+
+  margin-bottom            : spacing.$b12;
+  background-size          : cover;
+}
+
+
+.image-panel--1 {
+  @include                 image-panel;
+
+  background-image         : url(./image/about_dark.jpg);
+}
+
+
+
+.image-panel--2 {
+  @include                 image-panel;
+
+  background-image         : url(./image/about_light.jpg);
+}
+
+
+@mixin scrim {
+  background-color         : hsla(0, 0, 0, 0.4);
+  position                 : fixed;
+  z-index                  : 1;
+  width                    : 100vw;
+  height                   : 100vh;
+}
+
+
+
+.scrim {
+  @include                 scrim;
+
+  display                  : none;
+}
+
+
+
+.scrim--active {
+  @include                 scrim;
+
+  display                  : block;
+}
