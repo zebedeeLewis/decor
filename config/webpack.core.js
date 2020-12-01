@@ -61,7 +61,10 @@ const webpackModule
         , { test: /\.(png|svg|jpg|jpeg|gif)$/i
           , type: 'asset/resource'
           , generator :
-              { filename: path.join('images', '[name][ext]')
+              { filename: path.join
+                            ( 'images'
+                            , '[name]-[contenthash][ext]'
+                            )
               }
           }
 

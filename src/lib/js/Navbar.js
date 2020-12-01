@@ -8,6 +8,8 @@ const HAMBURGER_SELECTOR = '.navbar-open'
  * for each possible ToggleState.
  *
  * @readonly
+ * @property {string} On  - class given to a toggled navbar
+ * @property {string} Off - class given to a navbar that is not toggled
  */
 const ToggledClass
   = Object.freeze
@@ -23,6 +25,8 @@ const ToggledClass
  * DOMElement for each possible ToggleState.
  *
  * @readonly
+ * @property {string} On  - class given to a scrim that is toggled
+ * @property {string} Off - class given to a scrim that is not toggled
  */
 const ToggledScrimClass
   = Object.freeze
@@ -39,8 +43,8 @@ const ToggledScrimClass
  *
  * @readonly
  * @enum {boolean}
- * @property On  - the Navbar is toggled
- * @property Off - the Navbar is not toggled
+ * @property {string} On  - the Navbar is toggled
+ * @property {string} Off - the Navbar is not toggled
  */
 const ToggledState
   = Object.freeze
@@ -67,6 +71,7 @@ const ToggledState
  * Produce a new Navbar model.
  *
  * @param {HTMLElement} element
+ *
  * @return {Model}
  */
 export function create
@@ -85,6 +90,7 @@ export function create
  * set the toggled property of the Navbar to TOGGLED_On
  * 
  * @param {Model} navbar
+ *
  * @return {Model}
  */
 export function toggle_on
@@ -101,6 +107,7 @@ export function toggle_on
  * set the toggled property of the Navbar to TOGGLED_Off
  * 
  * @param {Model} navbar
+ *
  * @return {Model}
  */
 export function toggle_off
@@ -193,7 +200,7 @@ function hide_scrim
  * Sync the DOM element of the given Navbar Model with it's
  * Model representation.
  *
- * @param {HTMLElement} window
+ * @param {Window} window
  * @param {Model} navbarModel
  *
  * @return {Model}
@@ -222,6 +229,7 @@ export function sync_dom_representation
         if( scrimElement ) { hide_scrim(scrimElement) }
         break
     }
+
 
     return navbarModel
   }

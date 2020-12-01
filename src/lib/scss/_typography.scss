@@ -34,14 +34,15 @@ $h1-line-height      : spacing.$b8;
   font-weight              : $font-weight-bold;
   margin-top               : 0;
   color                    : black;
+  display                  : inline-block;
 }
 
 
 @mixin h1 {
   @include                 h;
 
-  font-size                : $font-size + spacing.$b6;
-  line-height              : spacing.$b8;
+  font-size                : $font-size + spacing.$b5;
+  line-height              : spacing.$b10;
   margin-bottom            : spacing.$b9; 
 }
 

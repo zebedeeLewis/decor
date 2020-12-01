@@ -4,10 +4,12 @@
 
 @use "../../lib/scss/mixins";
 @use "../../lib/scss/spacing";
+@use "../../lib/scss/breakpoint";
 @use "../../lib/scss/typography";
 @use "../../lib/scss/icons";
 @use "../../lib/scss/button";
 @use "../../lib/scss/navbar";
+@use "../../lib/scss/color";
 @use "../../lib/scss/general";
 
 
@@ -19,14 +21,43 @@
 
 
 
-$panel-margins--sm    : spacing.$b8;
+$panel-margins--sm       : spacing.$b8;
+$panel-margins--lg       : spacing.$b25;
+breakpoint.$desktop-view : breakpoint.$lg;
 
 
 
 /* 0. Styles */
-.image-slides {
-  margin-bottom            : spacing.$b12;
+
+.main {
+  @media (min-width: breakpoint.$desktop-view) {
+    display                : grid;
+    grid-template-columns  : repeat(24, 1fr);
+    grid-template-areas    :
+      "a a a a a a a a a a a a a a b b b b b b b b b b"
+      "c c c c c c c d d d d d d d d d d e e e e e e e"
+  }
 }
+
+
+
+.image-slides {
+  @media (min-width: breakpoint.$desktop-view) {
+    grid-area              : a;
+  }
+}
+
+
+
+.text-slides {
+  @media (min-width: breakpoint.$desktop-view) {
+    grid-area              : b;
+    display                : flex;
+    align-items            : center;
+    justify-content        : center;
+  }
+}
+
 
 
 .slide-container {
@@ -51,6 +82,12 @@ $panel-margins--sm    : spacing.$b8;
   @include                 mixins.aspect-ratio--square;
 
   background-image         : url(./image/mobile/hero_1.jpg);
+
+  @media (min-width: breakpoint.$desktop-view) {
+    @include               mixins.aspect-ratio(63.4%);
+
+    background-image       : url(./image/desktop/hero_1.jpg);
+  }
 }
 
 
@@ -64,21 +101,68 @@ $panel-margins--sm    : spacing.$b8;
 
 
 
-.panel {
+@mixin panel {
   padding                  : 0 $panel-margins--sm;
   margin-bottom            : spacing.$b12;
+  margin-top               : spacing.$b12;
+
+  @media (min-width: breakpoint.$desktop-view) {
+    margin-bottom          : 0;
+    margin-top             : 0;
+  }
+}
+
+
+
+.panel {
+  @include                 panel;
+
+  @media (min-width: breakpoint.$desktop-view) {
+    padding                : 0 $panel-margins--lg;
+  }
+}
+
+
+
+.panel--about {
+  @include                 panel;
+
+  @media (min-width: breakpoint.$desktop-view) {
+    grid-area              : d;
+    align-self             : center;
+
+    padding                : 0 48px;
+  }
 }
 
 
 
 .panel__tagline {
   @include                 typography.h2;
+
+  @media (min-width: breakpoint.$desktop-view) {
+    @include               typography.h1;
+  }
+}
+
+
+
+.panel__tagline--about {
+  @include                 typography.h2;
+
+  @media (min-width: breakpoint.$desktop-view) {
+    @include               typography.h3;
+  }
 }
 
 
 
 .panel__content {
   margin-bottom            : spacing.$b12;
+
+  @media (min-width: breakpoint.$desktop-view) {
+    margin-bottom          : 0;
+  }
 }
 
 
@@ -92,6 +176,13 @@ $panel-margins--sm    : spacing.$b8;
 
   margin-bottom            : spacing.$b12;
   background-size          : cover;
+
+  @media (min-width: breakpoint.$desktop-view) {
+    @include               mixins.aspect-ratio(63.4%);
+
+    align-self             : start;
+    margin-bottom          : 0;
+  }
 }
 
 
@@ -99,6 +190,10 @@ $panel-margins--sm    : spacing.$b8;
   @include                 image-panel;
 
   background-image         : url(./image/about_dark.jpg);
+
+  @media (min-width: breakpoint.$desktop-view) {
+    grid-area              : c;
+  }
 }
 
 
@@ -107,29 +202,58 @@ $panel-margins--sm    : spacing.$b8;
   @include                 image-panel;
 
   background-image         : url(./image/about_light.jpg);
-}
 
-
-@mixin scrim {
-  background-color         : hsla(0, 0, 0, 0.4);
-  position                 : fixed;
-  z-index                  : 1;
-  width                    : 100vw;
-  height                   : 100vh;
+  @media (min-width: breakpoint.$desktop-view) {
+    grid-area              : e;
+  }
 }
 
 
 
-.scrim {
-  @include                 scrim;
+.button-block {
+  display                  : flex;
+  justify-content          : flex-end;
+  background-color         : black;
 
-  display                  : none;
+  @media (min-width: breakpoint.$desktop-view) {
+    grid-column            : 15 / span 3;
+    grid-row               : 1 / 2;
+    align-self             : end;
+  }
+}
+
+
+@mixin button {
+  display                 : inline-block;
+  background-color        : black;
+  color                   : color.$dark-grey;
+  border                  : none;
+  outline                 : none;
+  font-size               : 24px;
+  line-height             : unset;
+  padding                 : spacing.$b5;
+
+  &:hover {
+    background            : sassColor.scale(
+                              color.$dark-grey,
+                              $lightness: -10%
+                            );
+    color                  : white;
+  }
+
+  @media (min-width: breakpoint.$desktop-view) {
+    padding                : spacing.$b6 spacing.$b5;
+    width                  : 50%;
+  }
 }
 
 
 
-.scrim--active {
-  @include                 scrim;
+.button-left {
+  @include                 button;
+}
 
-  display                  : block;
+
+.button-right {
+  @include                 button;
 }

@@ -22,6 +22,15 @@ $panel-margins--sm    : spacing.$b8;
                              $panel-margins--sm
                              spacing.$b8
                              $panel-margins--sm;
+
+  @media (min-width: breakpoint.$desktop-view) {
+    padding-top            : spacing.$b15;
+
+    padding                : spacing.$b15
+                             spacing.$b13
+                             spacing.$b8
+                             spacing.$b13;
+  }
 }
 
 
@@ -42,17 +51,29 @@ $panel-margins--sm    : spacing.$b8;
   @include                 navbar-inner;
 
   background-color         : white;
+
+  @media (min-width: breakpoint.$desktop-view) {
+    background             : transparent;
+  }
 }
 
 
 .navbar .navbar__closed {
   display                  : flex;
+
+  @media (min-width: breakpoint.$desktop-view) {
+    display                : none;
+  }
 }
 
 
 
 .navbar .navbar__open {
   display                  : none;
+
+  @media (min-width: breakpoint.$desktop-view) {
+    display                : flex;
+  }
 }
 
 
@@ -76,6 +97,10 @@ $panel-margins--sm    : spacing.$b8;
   display                  : inline-block;
   margin-left              : spacing.$b6;
   color                    : black;
+
+  @media (min-width: breakpoint.$desktop-view) {
+    color                  : white;
+  }
 }
 
 
@@ -87,6 +112,27 @@ $panel-margins--sm    : spacing.$b8;
 
 .nav-item {
   @include                 nav-item;
+}
+
+
+
+.nav-item--first {
+  @include                 nav-item;
+
+  @media (min-width: breakpoint.$desktop-view) {
+    margin-left            : spacing.$b14;
+  }
+}
+
+
+
+.nav-item--logo {
+  display                  : none;
+
+  @media (min-width: breakpoint.$desktop-view) {
+    display                : inline-block;
+    font-size              : 14px;
+  }
 }
 
 
@@ -103,4 +149,34 @@ $panel-margins--sm    : spacing.$b8;
 .nav-item--active {
   @include                 nav-item;
   @include                 nav-item--active;
+}
+
+
+
+@mixin scrim {
+  background-color         : hsla(0, 0, 0, 0.4);
+  position                 : fixed;
+  z-index                  : 1;
+  width                    : 100vw;
+  height                   : 100vh;
+}
+
+
+
+.scrim {
+  @include                 scrim;
+
+  display                  : none;
+}
+
+
+
+.scrim--active {
+  @include                 scrim;
+
+  display                  : block;
+
+  @media (min-width: breakpoint.$desktop-view) {
+    display                : none;
+  }
 }
