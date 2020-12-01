@@ -1,5 +1,7 @@
 const CLOSE_SELECTOR = '.navbar-close'
 const HAMBURGER_SELECTOR = '.navbar-open'
+const SCROLL_ELEMENT_SELECTOR = 'body'
+const NO_SCROLL_CLASS = 'no-scroll'
 
 
 
@@ -8,6 +10,7 @@ const HAMBURGER_SELECTOR = '.navbar-open'
  * for each possible ToggleState.
  *
  * @readonly
+ * @enum {string}
  * @property {string} On  - class given to a toggled navbar
  * @property {string} Off - class given to a navbar that is not toggled
  */
@@ -25,6 +28,7 @@ const ToggledClass
  * DOMElement for each possible ToggleState.
  *
  * @readonly
+ * @enum {string}
  * @property {string} On  - class given to a scrim that is toggled
  * @property {string} Off - class given to a scrim that is not toggled
  */
@@ -43,8 +47,8 @@ const ToggledScrimClass
  *
  * @readonly
  * @enum {boolean}
- * @property {string} On  - the Navbar is toggled
- * @property {string} Off - the Navbar is not toggled
+ * @property {boolean} On  - the Navbar is toggled
+ * @property {boolean} Off - the Navbar is not toggled
  */
 const ToggledState
   = Object.freeze
@@ -62,7 +66,8 @@ const ToggledState
  * @property {HTMLElement} element - the DOM element this model
  *   represents.
  *
- * @property {ToggledState} toggled  - true if the Navbar is toggled
+ * @property {ToggledState} toggled  - ToggledState.On if the Navbar is
+ *   toggled otherwise ToggledState.Off
  */
 
 
@@ -197,6 +202,40 @@ function hide_scrim
 
 
 /**
+ * prevent page from scrolling.
+ *
+ * @param {HTMLElement} scrollElement
+ *
+ * @return {HTMLElement}
+ */
+function disable_page_scroll
+  ( scrollElement
+  ) {
+    scrollElement.classList.add( NO_SCROLL_CLASS )
+
+    return scrollElement
+  }
+
+
+
+/**
+ * re-enable page from scrolling.
+ *
+ * @param {HTMLElement} scrollElement
+ *
+ * @return {HTMLElement}
+ */
+function enable_page_scroll
+  ( scrollElement
+  ) {
+    scrollElement.classList.remove( NO_SCROLL_CLASS )
+
+    return scrollElement
+  }
+
+
+
+/**
  * Sync the DOM element of the given Navbar Model with it's
  * Model representation.
  *
@@ -216,17 +255,21 @@ export function sync_dom_representation
     const scrimElement
       =  document.querySelector('.' + ToggledScrimClass.Off)
       || document.querySelector('.' + ToggledScrimClass.On)
+    const scrollElement
+      =  document.querySelector(SCROLL_ELEMENT_SELECTOR)
 
 
-    switch (navbarModel.toggled) {
+    switch(navbarModel.toggled) {
       case ToggledState.On:
         display_nav_items(navbarElement)
         if( scrimElement ) { show_scrim(scrimElement) }
+        if( scrollElement ) { disable_page_scroll(scrollElement) }
         break
 
       case ToggledState.Off:
         display_navbar_hamburger(navbarElement)
         if( scrimElement ) { hide_scrim(scrimElement) }
+        if( scrollElement ) { enable_page_scroll(scrollElement) }
         break
     }
 
@@ -283,9 +326,10 @@ export function setup_handlers
 /**
  * Initialize the navbar functionality
  *
- * @property {Window} window - the browser window object
- * @property {string) navbarSelector - the selector for the DOM
+ * @param {Window} window - the browser window object
+ * @param {string) navbarSelector - the selector for the DOM
  *   element we want to initialize.
+ *
  * @return {Model}
  *
  * @throws {Error}

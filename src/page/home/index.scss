@@ -28,6 +28,15 @@ breakpoint.$desktop-view : breakpoint.$lg;
 
 
 /* 0. Styles */
+.no-scroll {
+  overflow                 : hidden;
+
+  @media (min-width: breakpoint.$desktop-view) {
+    overflow               : auto;
+  }
+}
+
+
 
 .main {
   @media (min-width: breakpoint.$desktop-view) {
@@ -219,6 +228,7 @@ breakpoint.$desktop-view : breakpoint.$lg;
     grid-column            : 15 / span 3;
     grid-row               : 1 / 2;
     align-self             : end;
+    z-index                : 2;
   }
 }
 
