@@ -67,9 +67,9 @@ const DIST_IMAGE_DIR = path.join(DIST_DIR, 'image/')
 
 
 
-const DEV_PUBLIC_PATH = '/room_homepage/'
+const DEV_PUBLIC_PATH = '/decor/'
 
-const PROD_PUBLIC_PATH = '/room_homepage/'
+const PROD_PUBLIC_PATH = '/decor/'
 
 
 

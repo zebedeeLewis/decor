@@ -5,6 +5,7 @@
   "main": "src/index.js",
   "scripts": {
     "build": "cross-env NODE_ENV=production webpack --config ./config/webpack.prod.js",
+    "build:stats": "cross-env NODE_ENV=production webpack --profile --json=compilation-stats.json --config ./config/webpack.prod.js",
     "start": "cross-env NODE_ENV=development webpack serve --config ./config/webpack.dev.js",
     "inspect:webpack:prod": "cross-env NODE_ENV=production node-nightly --inspect-brk ./node_modules/webpack/bin/webpack.js --config config/webpack.prod.js",
     "inspect:webpack:dev": "cross-env NODE_ENV=development node-nightly --inspect-brk ./node_modules/webpack/bin/webpack.js serve --config config/webpack.dev.js",
