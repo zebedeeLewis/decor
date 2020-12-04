@@ -63,9 +63,9 @@ function partial_name_from_path
 
 
 function html_webpack_plugin_from_entry
-  ( [ entryName
-    , absolutePathToEntryFile
-    ]
+  ( entryPointMetadata
+  , entryName
+  , absolutePathToEntryFile
   ) {
     const absolutePathToPageDir = path.dirname(absolutePathToEntryFile)
 
@@ -77,11 +77,16 @@ function html_webpack_plugin_from_entry
           ( absolutePathToEntryFile
           , ProjectStructure.PAGES_DIR
           )
+    const title
+      = ( entryPointMetadata 
+            ? entryPointMetadata.title || 'NO TITLE'
+            : 'NO TITLE'
+        )
 
 
     const template
       = `${pathToPageShell}`
-      + `?title=TEST_TITLE`
+      + `?title=${title}`
       + `&templatesDir=${ProjectStructure.PAGES_DIR}`
       + `&nameOfContentPartial=${nameOfContentPartial}`
 

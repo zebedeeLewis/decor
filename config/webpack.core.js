@@ -14,6 +14,14 @@ const entry
 
 
 
+const entriesMetadata
+  = { index :
+        { title : 'Home'
+        }
+    }
+
+
+
 const output
   = { filename   : path.join('js', '[name].js')
     , path       : ProjectStructure.DIST_DIR
@@ -83,7 +91,15 @@ const webpackModule
 const plugins
   = [ new CleanWebpackPlugin()
     , ... Object.entries(entry).map
-            ( ConfigSupport.html_webpack_plugin_from_entry
+            ( ([entryName, entryPath]) => {
+                return (
+                  ConfigSupport.html_webpack_plugin_from_entry
+                    ( entriesMetadata[entryName]
+                    , entryName
+                    , entryPath
+                    )
+                )
+              }
             )
     ]
 
