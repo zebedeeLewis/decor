@@ -21,9 +21,10 @@
 
 
 
-$panel-margins--sm       : spacing.$b8;
+$panel-margins--xs       : spacing.$b8;
+$panel-margins--sm       : spacing.$b16;
+$panel-margins--md       : spacing.$b8;
 $panel-margins--lg       : spacing.$b25;
-breakpoint.$desktop-view : breakpoint.$lg;
 
 
 
@@ -92,10 +93,18 @@ breakpoint.$desktop-view : breakpoint.$lg;
 
   background-image         : url(./image/mobile/hero_1.jpg);
 
-  @media (min-width: breakpoint.$desktop-view) {
-    @include               mixins.aspect-ratio(63.4%);
+  @media (min-width: breakpoint.$sm) {
+    @include               mixins.aspect-ratio--21to9;
 
     background-image       : url(./image/desktop/hero_1.jpg);
+  }
+
+  @media (min-width: breakpoint.$desktop-view) {
+    @include               mixins.aspect-ratio--4to3;
+  }
+
+  @media (min-width: breakpoint.$lg) {
+    @include               mixins.aspect-ratio(63.4%);
   }
 }
 
@@ -111,11 +120,16 @@ breakpoint.$desktop-view : breakpoint.$lg;
 
 
 @mixin panel {
-  padding                  : 0 $panel-margins--sm;
+  padding                  : 0 $panel-margins--xs;
   margin-bottom            : spacing.$b12;
   margin-top               : spacing.$b12;
 
+  @media (min-width: breakpoint.$sm) {
+    padding                : 0 $panel-margins--sm;
+  }
+
   @media (min-width: breakpoint.$desktop-view) {
+    padding                : 0 $panel-margins--md;
     margin-bottom          : 0;
     margin-top             : 0;
   }
@@ -126,9 +140,11 @@ breakpoint.$desktop-view : breakpoint.$lg;
 .panel {
   @include                 panel;
 
-  @media (min-width: breakpoint.$desktop-view) {
+
+  @media (min-width: breakpoint.$lg) {
     padding                : 0 $panel-margins--lg;
   }
+
 }
 
 
@@ -139,7 +155,9 @@ breakpoint.$desktop-view : breakpoint.$lg;
   @media (min-width: breakpoint.$desktop-view) {
     grid-area              : d;
     align-self             : center;
+  }
 
+  @media (min-width: breakpoint.$lg) {
     padding                : 0 48px;
   }
 }
@@ -149,7 +167,7 @@ breakpoint.$desktop-view : breakpoint.$lg;
 .panel__tagline {
   @include                 typography.h2;
 
-  @media (min-width: breakpoint.$desktop-view) {
+  @media (min-width: breakpoint.$lg) {
     @include               typography.h1;
   }
 }
@@ -186,11 +204,18 @@ breakpoint.$desktop-view : breakpoint.$lg;
   margin-bottom            : spacing.$b12;
   background-size          : cover;
 
-  @media (min-width: breakpoint.$desktop-view) {
-    @include               mixins.aspect-ratio(63.4%);
+  @media (min-width: breakpoint.$sm) {
+    @include               mixins.aspect-ratio--16to9;
+  }
 
+  @media (min-width: breakpoint.$desktop-view) {
+    @include               mixins.aspect-ratio--square;
     align-self             : start;
     margin-bottom          : 0;
+  }
+
+  @media (min-width: breakpoint.$lg) {
+    @include               mixins.aspect-ratio(63.4%);
   }
 }
 

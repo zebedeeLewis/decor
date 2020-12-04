@@ -5,7 +5,8 @@
 
 
 $nav-item-vertical-spacing : spacing.$b3;
-$panel-margins--sm    : spacing.$b8;
+$panel-margins--xs         : spacing.$b8;
+$panel-margins--sm         : spacing.$b16;
 
 
 
@@ -19,13 +20,18 @@ $panel-margins--sm    : spacing.$b8;
 
 @mixin navbar-inner {
   padding                  : spacing.$b12
+                             $panel-margins--xs
+                             spacing.$b8
+                             $panel-margins--xs;
+
+  @media (min-width: breakpoint.$sm) {
+    padding                : spacing.$b12
                              $panel-margins--sm
                              spacing.$b8
-                             $panel-margins--sm;
+                             $panel-margins--sm
+  }
 
   @media (min-width: breakpoint.$desktop-view) {
-    padding-top            : spacing.$b15;
-
     padding                : spacing.$b15
                              spacing.$b13
                              spacing.$b8
