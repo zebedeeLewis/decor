@@ -100,7 +100,6 @@ function html_webpack_plugin_from_entry
   
 
 
-
 const preprocessor =
   function
     ( content
