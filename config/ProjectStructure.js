@@ -27,11 +27,11 @@ const HOMEPAGE_DIR = path.join(PAGES_DIR, 'home/')
 
 
 
-const TEMPLATES_LIB_DIR = path.join(SRC_LIB_DIR, 'template/')
+const TEMPLATES_LIB_DIR = path.join(SRC_LIB_DIR, 'handlebars_partials/')
 
 const HANDLERS_LIB_DIR = path.join(SRC_LIB_DIR, 'handler/')
 
-const JS_LIB_DIR = path.join(SRC_LIB_DIR, 'template/')
+const JS_LIB_DIR = path.join(SRC_LIB_DIR, 'handlebars_partials/')
 
 const SCSS_LIB_DIR = path.join(SRC_LIB_DIR, 'scss/')
 
@@ -51,7 +51,7 @@ const HOMEPAGE_JS_PATH = path.join(HOMEPAGE_DIR, 'index.js')
 
 const HOMEPAGE_SCSS_PATH = path.join(HOMEPAGE_DIR, 'index.scss')
 
-const HOMEPAGE_PARTIALS_DIR = path.join(HOMEPAGE_DIR, 'template')
+const HOMEPAGE_PARTIALS_DIR = path.join(HOMEPAGE_DIR, 'handlebars_partials')
 
 const HOMEPAGE_IMAGE_DIR = path.join(HOMEPAGE_DIR, 'image')
 
