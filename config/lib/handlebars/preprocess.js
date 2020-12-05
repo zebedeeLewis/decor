@@ -12,10 +12,10 @@ function register_as_handlebars_partial
   , absolutePath
   ) {
     const dirname =
-      path.dirname(path.relative(templatesDir, absolutePath))
+      path.dirname(path.relative(templatesDir.dir, absolutePath))
     const basename =
       path.basename
-        ( path.relative(templatesDir, absolutePath)
+        ( path.relative(templatesDir.dir, absolutePath)
         , '.handlebars.html'
         )
 
@@ -25,7 +25,11 @@ function register_as_handlebars_partial
 
     const partialAsString
       = loaderContext.fs.readFileSync(absolutePath, 'utf8')
-    const partialName = relativePath.split(path.sep).join('/')
+    const partialName
+      = ( templatesDir.namespace
+        + '/'
+        + relativePath
+        ).split(path.sep).join('/')
 
 
     handlebars.registerPartial({[partialName]: partialAsString})
@@ -105,7 +109,7 @@ function register_handlebars_partials_in_dir
   , templatesDir
   , handlebars
   ) {
-    const dirTree = get_directory_tree(templatesDir)
+    const dirTree = get_directory_tree(templatesDir.dir)
 
 
     return (
@@ -145,11 +149,19 @@ function preprocess_handlebars
     const appliedContext = {title, nameOfContentPartial}
 
 
+    const queryTemplatesDir
+      = ( queryOptions.templatesDir
+            ? { dir       : queryOptions.templatesDir
+              , namespace : queryOptions.templatesNamespace || 'query'
+              }
+            : null
+        )
+
     const appliedTemplatesDirs
       = new Set
-          ( queryOptions.templatesDir
+          ( queryTemplatesDir
               ? [ ... templatesDirs || []
-                , queryOptions.templatesDir
+                , queryTemplatesDir
                 ]
               : templatesDirs || []
           )

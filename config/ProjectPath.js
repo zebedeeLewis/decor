@@ -47,6 +47,10 @@ const DEFAULT_HTML_SHELL_PATH
 // Paths To Components Source File
 const COMPONENTS_DIR = path.join(SRC_DIR, 'component/')
 const COMPONENTS_LIB_DIR = path.join(COMPONENTS_DIR, 'lib/')
+const COMPONENTS_LIB_PARTIALS_DIR
+  = path.join(COMPONENTS_LIB_DIR, 'handlebars_partial/')
+const COMPONENTS_LIB_HANDLERS_DIR
+  = path.join(COMPONENTS_LIB_DIR, 'handlebars_handler/')
 
 
 
@@ -70,6 +74,9 @@ module.exports =
   , PAGES_LIB_PARTIALS_DIR
   , PAGES_LIB_HANDLERS_DIR
   , PAGE_HOME_JS_PATH
+  , COMPONENTS_LIB_PARTIALS_DIR
+  , COMPONENTS_LIB_DIR
+  , COMPONENTS_DIR
   , DIST_DIR
   , DEV_PUBLIC_PATH
   , PROD_PUBLIC_PATH

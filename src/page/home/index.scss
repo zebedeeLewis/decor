@@ -2,15 +2,15 @@
 @use "node_modules/normalize.css/normalize.css";
 @use "sass:color" as sassColor;
 
-@use "../lib/scss/mixins";
-@use "../../lib/scss/spacing";
-@use "../../lib/scss/breakpoint";
+@use "../lib/scss/aspect-ratio";
 @use "../lib/scss/typography";
 @use "../lib/scss/icons";
-@use "../lib/scss/button";
-@use "../lib/scss/navbar";
-@use "../lib/scss/color";
-@use "../lib/scss/general";
+
+@use "../../lib/scss/color";
+@use "../../lib/scss/spacing";
+@use "../../lib/scss/breakpoint";
+
+@use "../../component/Navbar/navbar";
 
 
 
@@ -89,22 +89,22 @@ $panel-margins--lg       : spacing.$b25;
 
 .image-slide {
   @include                 slide;
-  @include                 mixins.aspect-ratio--square;
+  @include                 aspect-ratio.square;
 
   background-image         : url(./image/mobile/hero_1.jpg);
 
   @media (min-width: breakpoint.$sm) {
-    @include               mixins.aspect-ratio--21to9;
+    @include               aspect-ratio.r21to9;
 
     background-image       : url(./image/desktop/hero_1.jpg);
   }
 
   @media (min-width: breakpoint.$desktop-view) {
-    @include               mixins.aspect-ratio--4to3;
+    @include               aspect-ratio.r4to3;
   }
 
   @media (min-width: breakpoint.$lg) {
-    @include               mixins.aspect-ratio(63.4%);
+    @include               aspect-ratio.custom(63.4%);
   }
 }
 
@@ -199,23 +199,23 @@ $panel-margins--lg       : spacing.$b25;
 
 
 @mixin image-panel {
-  @include                 mixins.aspect-ratio--square;
+  @include                 aspect-ratio.square;
 
   margin-bottom            : spacing.$b12;
   background-size          : cover;
 
   @media (min-width: breakpoint.$sm) {
-    @include               mixins.aspect-ratio--16to9;
+    @include               aspect-ratio.r16to9;
   }
 
   @media (min-width: breakpoint.$desktop-view) {
-    @include               mixins.aspect-ratio--square;
+    @include               aspect-ratio.square;
     align-self             : start;
     margin-bottom          : 0;
   }
 
   @media (min-width: breakpoint.$lg) {
-    @include               mixins.aspect-ratio(63.4%);
+    @include               aspect-ratio.custom(63.4%);
   }
 }
 

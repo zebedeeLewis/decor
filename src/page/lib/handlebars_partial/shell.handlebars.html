@@ -25,7 +25,8 @@
   </head>
   <body>
     <div class="container">
-      {{> (lookup . 'nameOfContentPartial') }}
+      {{! (lookup . 'nameOfContentPartial') }}
+      {{> [page/home/index] }}
     </div>
   </body>
 </html>

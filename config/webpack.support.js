@@ -83,11 +83,14 @@ function html_webpack_plugin_from_entry
             : 'NO TITLE'
         )
 
+    const templatesNamespace = path.basename(ProjectPath.PAGES_DIR)
+
 
     const template
       = `${pathToPageShell}`
       + `?title=${title}`
       + `&templatesDir=${ProjectPath.PAGES_DIR}`
+      + `&templatesNamespace=${templatesNamespace}`
       + `&nameOfContentPartial=${nameOfContentPartial}`
 
 
@@ -110,7 +113,18 @@ const preprocessor =
           ( loaderContext
           , { content
             , templatesDirs :
-                [ ProjectPath.PAGES_LIB_PARTIALS_DIR 
+                [ { dir       : ProjectPath.PAGES_DIR
+                  , namespace : 'page'
+                  }
+                , { dir       : ProjectPath.PAGES_LIB_PARTIALS_DIR 
+                  , namespace : 'page/partial'
+                  }
+                , { dir       : ProjectPath.COMPONENTS_DIR
+                  , namespace : 'component'
+                  }
+                , { dir       : ProjectPath.COMPONENTS_LIB_PARTIALS_DIR
+                  , namespace : 'component/partial'
+                  }
                 ]
             , handlersDirs  :
                 [ ProjectPath.PAGES_LIB_HANDLERS_DIR
