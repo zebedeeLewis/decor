@@ -107,6 +107,11 @@ const plugins
 
 const resolve
   = { extensions : ['.js', '.mjs', '.css', 'scss']
+    , alias      :
+        { component : ProjectPath.COMPONENTS_DIR
+        , lib       : ProjectPath.LIB_DIR
+        , pages     : ProjectPath.PAGES_DIR
+        }
     }
 
 

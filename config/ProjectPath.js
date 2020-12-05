@@ -53,6 +53,10 @@ const COMPONENTS_LIB_HANDLERS_DIR
   = path.join(COMPONENTS_LIB_DIR, 'handlebars_handler/')
 
 
+// Paths To Source Library
+const LIB_DIR = path.join(SRC_DIR, 'lib/')
+
+
 
 /** Dist File Paths */
 const DIST_DIR = path.join(ROOT_DIR, 'dist/')
@@ -81,5 +85,6 @@ module.exports =
   , DEV_PUBLIC_PATH
   , PROD_PUBLIC_PATH
   , POST_CSS_CONFIG_PATH
+  , LIB_DIR
   }
 

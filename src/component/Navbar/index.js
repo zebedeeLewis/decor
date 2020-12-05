@@ -1,1 +1,1 @@
-export init from './Navbar'
+export { init } from './Navbar'

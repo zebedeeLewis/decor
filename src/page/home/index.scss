@@ -2,15 +2,15 @@
 @use "node_modules/normalize.css/normalize.css";
 @use "sass:color" as sassColor;
 
-@use "../lib/scss/aspect-ratio";
-@use "../lib/scss/typography";
-@use "../lib/scss/icons";
+@use "pages/lib/scss/aspect-ratio";
+@use "pages/lib/scss/typography";
+@use "pages/lib/scss/icons";
 
-@use "../../lib/scss/color";
-@use "../../lib/scss/spacing";
-@use "../../lib/scss/breakpoint";
+@use "lib/scss/color";
+@use "lib/scss/spacing";
+@use "lib/scss/breakpoint";
 
-@use "../../component/Navbar/navbar";
+@use "component/Navbar/navbar";
 
 
 

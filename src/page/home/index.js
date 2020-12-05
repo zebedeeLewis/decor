@@ -1,5 +1,5 @@
 import './index.scss'
-import * as Navbar from "../lib/js/Navbar"
+import * as Navbar from "component/Navbar"
 
 
 function init
