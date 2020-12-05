@@ -1,5 +1,5 @@
 const { merge } = require('webpack-merge')
-const ProjectStructure = require('./ProjectStructure')
+const ProjectPath = require('./ProjectPath')
 const coreConfig = require('./webpack.core.js')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const path = require('path')
@@ -15,7 +15,7 @@ const webpackModule =
             , { loader  : 'postcss-loader'
               , options : 
                   { postcssOptions :
-                    { config: ProjectStructure.POST_CSS_CONFIG_PATH
+                    { config: ProjectPath.POST_CSS_CONFIG_PATH
                     }
                   }
               }

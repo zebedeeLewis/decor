@@ -1,7 +1,7 @@
 const { merge } = require('webpack-merge')
 const coreConfig = require('./webpack.core.js')
 const path = require('path')
-const ProjectStructure = require('./ProjectStructure')
+const ProjectPath = require('./ProjectPath')
 const webpack = require('webpack')
 
 
@@ -20,7 +20,7 @@ const webpackModule =
               , options : 
                   { sourceMap      : true
                   , postcssOptions :
-                    { config: ProjectStructure.POST_CSS_CONFIG_PATH
+                    { config: ProjectPath.POST_CSS_CONFIG_PATH
                     }
                   }
               }
@@ -40,12 +40,12 @@ const webpackModule =
 
 
 const devServer =
-  { contentBase : ProjectStructure.BUILD_DIR
-  , publicPath  : ProjectStructure.DEV_PUBLIC_PATH
+  { contentBase : ProjectPath.DIST_DIR
+  , publicPath  : ProjectPath.DEV_PUBLIC_PATH
   , openPage    :
       path.relative
         ('/'
-        , path.join(ProjectStructure.DEV_PUBLIC_PATH, 'index.html')
+        , path.join(ProjectPath.DEV_PUBLIC_PATH, 'index.html')
         )
   , open        : true
   , hot         : true

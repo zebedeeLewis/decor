@@ -2,7 +2,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 const path = require('path')
 const fs = require('fs')
 const preprocess_handlebars = require('./lib/handlebars/preprocess.js')
-const ProjectStructure = require('./ProjectStructure')
+const ProjectPath = require('./ProjectPath')
 
 
 
@@ -24,7 +24,7 @@ function determine_path_to_page_shell
   ( absolutePathToPageDir
   ) {
     const pathToDefaultPageShell
-      = ProjectStructure.DEFAULT_HTML_SHELL_PATH
+      = ProjectPath.DEFAULT_HTML_SHELL_PATH
     const pathToPageShell
       = path.join(absolutePathToPageDir, 'shell.handlebars.html')
 
@@ -75,7 +75,7 @@ function html_webpack_plugin_from_entry
     const nameOfContentPartial
       = partial_name_from_path
           ( absolutePathToEntryFile
-          , ProjectStructure.PAGES_DIR
+          , ProjectPath.PAGES_DIR
           )
     const title
       = ( entryPointMetadata 
@@ -87,7 +87,7 @@ function html_webpack_plugin_from_entry
     const template
       = `${pathToPageShell}`
       + `?title=${title}`
-      + `&templatesDir=${ProjectStructure.PAGES_DIR}`
+      + `&templatesDir=${ProjectPath.PAGES_DIR}`
       + `&nameOfContentPartial=${nameOfContentPartial}`
 
 
@@ -109,8 +109,12 @@ const preprocessor =
         preprocess_handlebars.call
           ( loaderContext
           , { content
-            , templatesDirs : [ ProjectStructure.TEMPLATES_LIB_DIR ]
-            , handlersDirs  : [ ProjectStructure.HANDLERS_LIB_DIR ]
+            , templatesDirs :
+                [ ProjectPath.PAGES_LIB_PARTIALS_DIR 
+                ]
+            , handlersDirs  :
+                [ ProjectPath.PAGES_LIB_HANDLERS_DIR
+                ]
             }
           )
       )

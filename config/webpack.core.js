@@ -1,7 +1,7 @@
 const path = require('path')
-const ProjectStructure = require('./ProjectStructure')
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 const ConfigSupport = require('./webpack.support.js')
+const ProjectPath = require('./ProjectPath')
 
 
 const mode = process.env.NODE_ENV
@@ -9,7 +9,7 @@ const mode = process.env.NODE_ENV
 
 
 const entry
-  = { index : ProjectStructure.HOMEPAGE_JS_PATH
+  = { index : ProjectPath.PAGE_HOME_JS_PATH
     }
 
 
@@ -24,11 +24,11 @@ const entriesMetadata
 
 const output
   = { filename   : path.join('js', '[name].js')
-    , path       : ProjectStructure.DIST_DIR
+    , path       : ProjectPath.DIST_DIR
     , publicPath :
         ( process.env.NODE_ENV === 'development' 
-            ? ProjectStructure.DEV_PUBLIC_PATH
-            : ProjectStructure.PROD_PUBLIC_PATH
+            ? ProjectPath.DEV_PUBLIC_PATH
+            : ProjectPath.PROD_PUBLIC_PATH
         )
     , environment:
         { arrowFunction : false
