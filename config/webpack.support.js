@@ -97,6 +97,7 @@ function html_webpack_plugin_from_entry
     return new HtmlWebpackPlugin(
       { template : template
       , filename : entryName + '.html'
+      , favicon  : ProjectPath.FAVICON
       }
     )
   }

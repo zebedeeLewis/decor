@@ -39,9 +39,11 @@ const PAGES_LIB_HANDLERS_DIR
   = path.join(PAGES_LIB_DIR, 'handlebars_handler/')
 const PAGES_LIB_SCSS_DIR = path.join(PAGES_LIB_DIR, 'scss/')
 const PAGES_LIB_JS_DIR = path.join(PAGES_LIB_DIR, 'js/')
-const PAGES_LIB_IMAGES_DIR = path.join(PAGES_LIB_DIR, 'images/')
+const PAGES_LIB_IMAGES_DIR = path.join(PAGES_LIB_DIR, 'image/')
 const DEFAULT_HTML_SHELL_PATH
   = path.join(PAGES_LIB_PARTIALS_DIR, 'shell.handlebars.html')
+const FAVICON
+  = path.join(PAGES_LIB_IMAGES_DIR, 'favicon-32x32.png')
 
 
 // Paths To Components Source File
@@ -86,5 +88,6 @@ module.exports =
   , PROD_PUBLIC_PATH
   , POST_CSS_CONFIG_PATH
   , LIB_DIR
+  , FAVICON
   }
 
