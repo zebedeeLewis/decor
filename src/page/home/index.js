@@ -36,6 +36,7 @@ function init_slider
       new Splide
         ( TEXT_SLIDER_SELECTOR
         , { autoWidth  : true
+          , autoplay   : true
           , arrows     : false
           , type       : 'loop'
           , pagination : false
