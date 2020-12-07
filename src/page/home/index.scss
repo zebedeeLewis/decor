@@ -248,6 +248,7 @@ div {
 
   @media (min-width: breakpoint.$desktop-view) {
     padding                : 0 $panel-margins--md;
+    margin-top             : spacing.$b8;
     margin-bottom          : 0;
   }
 
