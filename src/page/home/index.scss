@@ -15,12 +15,21 @@
 
 
 /* Contents
- * 0. Variables
- * 0. Mixins
+ * 1. Variables
+ * 2. Mixins
+ * 3. General
+ * 4. Image Slider
+ * 5. Button Block
+ * 6. Text Slider
+ * 7. About Section
+ * 8. Misc
  */
 
 
 
+/*
+ * 1. Variables
+ */
 $panel-margins--xs       : spacing.$b8;
 $panel-margins--sm       : spacing.$b16;
 $panel-margins--md       : spacing.$b8;
@@ -28,13 +37,21 @@ $panel-margins--lg       : spacing.$b25;
 
 
 
+/*
+ * 2. Mixins
+ */
+
+
+
+/*
+ * 3. General
+ */
 div {
   box-sizing             : border-box;
 }
 
 
 
-/* 0. Styles */
 .no-scroll {
   overflow                 : hidden;
 
@@ -57,7 +74,29 @@ div {
 
 
 
-.image-slides {
+.display-none {
+  display                   : none;
+}
+
+
+
+.splide {
+  width                    : 100%;
+}
+
+
+
+.splide__list {
+  width                    : 100%;
+}
+
+
+
+/*
+ * 4. Image Slider
+ */
+
+.image-slider {
   position                 : relative;
 
   @media (min-width: breakpoint.$desktop-view) {
@@ -67,44 +106,12 @@ div {
 
 
 
-.text-slides {
-  @media (min-width: breakpoint.$desktop-view) {
-    grid-area              : b;
-    display                : flex;
-    align-items            : flex-start;
-    justify-content        : center;
-  }
-
-  @media (min-width: breakpoint.$lg) {
-    align-items            : center;
-  }
-}
-
-
-
-.slide-container {
-  /*position                 : relative;*/
-}
-
-
-
-@mixin slide {
-  width                    : 100%;
-}
-
-
-.slide {
-  @include                 slide;
-}
-
-
-
 @mixin image-slide {
-  @include                 slide;
-  @include                 aspect-ratio.square;
-
+  width                    : 100%;
   background-size          : cover;
   background-repeat        : no-repeat;
+
+  @include                 aspect-ratio.square;
 
   @media (min-width: breakpoint.$sm) {
     @include               aspect-ratio.r21to9;
@@ -153,146 +160,24 @@ div {
 
 
 
-.splide {
-  width                    : 100%;
-}
-
-
-
-.splide__list {
-  width                    : 100%;
-}
-
-
-
-@mixin panel {
-  padding                  : 0 $panel-margins--xs;
-  margin-bottom            : spacing.$b12;
-  margin-top               : spacing.$b12;
-  width                    : 100%;
-
-  @media (min-width: breakpoint.$sm) {
-    padding                : 0 $panel-margins--sm;
-  }
-
+.text-slider {
   @media (min-width: breakpoint.$desktop-view) {
-    padding                : 0 $panel-margins--md;
-    margin-bottom          : 0;
+    grid-area              : b;
+    display                : flex;
+    align-items            : flex-start;
+    justify-content        : center;
   }
 
   @media (min-width: breakpoint.$lg) {
-    margin-top             : 0;
+    align-items            : center;
   }
 }
 
 
 
-.panel {
-  @include                 panel;
-
-
-  @media (min-width: breakpoint.$lg) {
-    padding                : 0 $panel-margins--lg;
-  }
-
-}
-
-
-
-.panel--about {
-  @include                 panel;
-
-  @media (min-width: breakpoint.$desktop-view) {
-    grid-area              : d;
-    align-self             : center;
-  }
-
-  @media (min-width: breakpoint.$lg) {
-    padding                : 0 48px;
-  }
-}
-
-
-
-.panel__tagline {
-  @include                 typography.h2;
-
-  @media (min-width: breakpoint.$lg) {
-    @include               typography.h1;
-  }
-}
-
-
-
-.panel__tagline--about {
-  @include                 typography.h2;
-
-  @media (min-width: breakpoint.$desktop-view) {
-    @include               typography.h3;
-  }
-}
-
-
-
-.panel__content {
-  margin-bottom            : spacing.$b12;
-
-  @media (min-width: breakpoint.$desktop-view) {
-    margin-bottom          : 0;
-  }
-}
-
-
-.display-none {
-  display                   : none;
-}
-
-
-@mixin image-panel {
-  @include                 aspect-ratio.square;
-
-  margin-bottom            : spacing.$b12;
-  background-size          : cover;
-
-  @media (min-width: breakpoint.$sm) {
-    @include               aspect-ratio.r16to9;
-  }
-
-  @media (min-width: breakpoint.$desktop-view) {
-    @include               aspect-ratio.square;
-    align-self             : start;
-    margin-bottom          : 0;
-  }
-
-  @media (min-width: breakpoint.$lg) {
-    @include               aspect-ratio.custom(63.4%);
-  }
-}
-
-
-.image-panel--1 {
-  @include                 image-panel;
-
-  background-image         : url(./image/about_dark.jpg);
-
-  @media (min-width: breakpoint.$desktop-view) {
-    grid-area              : c;
-  }
-}
-
-
-
-.image-panel--2 {
-  @include                 image-panel;
-
-  background-image         : url(./image/about_light.jpg);
-
-  @media (min-width: breakpoint.$desktop-view) {
-    grid-area              : e;
-  }
-}
-
-
+/*
+ * 5. Button Block
+ */
 
 .button-block {
   display                  : flex;
@@ -306,6 +191,7 @@ div {
     z-index                : 2;
   }
 }
+
 
 
 @mixin button {
@@ -339,6 +225,148 @@ div {
 }
 
 
+
 .button-right {
   @include                 button;
 }
+
+
+
+/*
+ * 6. Text Slider
+ */
+
+@mixin panel {
+  padding                  : 0 $panel-margins--xs;
+  margin-bottom            : spacing.$b12;
+  margin-top               : spacing.$b12;
+  width                    : 100%;
+
+  @media (min-width: breakpoint.$sm) {
+    padding                : 0 $panel-margins--sm;
+  }
+
+  @media (min-width: breakpoint.$desktop-view) {
+    padding                : 0 $panel-margins--md;
+    margin-bottom          : 0;
+  }
+
+  @media (min-width: breakpoint.$lg) {
+    margin-top             : 0;
+  }
+}
+
+
+
+.panel {
+  @include                 panel;
+
+
+  @media (min-width: breakpoint.$lg) {
+    padding                : 0 $panel-margins--lg;
+  }
+}
+
+
+
+.panel__tagline {
+  @include                 typography.h2;
+
+  @media (min-width: breakpoint.$lg) {
+    @include               typography.h1;
+  }
+}
+
+
+
+.panel__content {
+  margin-bottom            : spacing.$b12;
+
+  @media (min-width: breakpoint.$desktop-view) {
+    margin-bottom          : 0;
+  }
+}
+
+
+
+/*
+ * 7. About Section
+ */
+
+.about-section {
+  @include                 panel;
+
+  @media (min-width: breakpoint.$desktop-view) {
+    grid-area              : d;
+    align-self             : center;
+  }
+
+  @media (min-width: breakpoint.$lg) {
+    padding                : 0 48px;
+  }
+}
+
+
+
+.panel__tagline--about {
+  @include                 typography.h2;
+
+  @media (min-width: breakpoint.$desktop-view) {
+    @include               typography.h3;
+  }
+}
+
+
+
+/** TODO:
+ *    - instead of representing the "image-panel" components using
+ *      tags, we can use ":before" and ":after" pseudo elements.
+ *      this will make our html a lot lighter and easier on the eyes.
+ */
+@mixin image-panel {
+  @include                 aspect-ratio.square;
+
+  margin-bottom            : spacing.$b12;
+  background-size          : cover;
+
+  @media (min-width: breakpoint.$sm) {
+    @include               aspect-ratio.r16to9;
+  }
+
+  @media (min-width: breakpoint.$desktop-view) {
+    @include               aspect-ratio.square;
+    align-self             : start;
+    margin-bottom          : 0;
+  }
+
+  @media (min-width: breakpoint.$lg) {
+    @include               aspect-ratio.custom(63.4%);
+  }
+}
+
+
+
+.image-panel--1 {
+  @include                 image-panel;
+
+  background-image         : url(./image/about_dark.jpg);
+
+  @media (min-width: breakpoint.$desktop-view) {
+    grid-area              : c;
+  }
+}
+
+
+
+.image-panel--2 {
+  @include                 image-panel;
+
+  background-image         : url(./image/about_light.jpg);
+
+  @media (min-width: breakpoint.$desktop-view) {
+    grid-area              : e;
+  }
+}
+
+
+
