@@ -6,6 +6,8 @@ import Splide from '@splidejs/splide';
 
 const IMAGE_SLIDER_SELECTOR = '#image-slider'
 const TEXT_SLIDER_SELECTOR = '#text-slider'
+const LEFT_BUTTON_SELECTOR = '.slider-control__left'
+const RIGHT_BUTTON_SELECTOR = '.slider-control__right'
 
 
 
@@ -44,7 +46,7 @@ function init_slider
         )
 
 
-    const leftButton = document.querySelector('.button-left')
+    const leftButton = document.querySelector(LEFT_BUTTON_SELECTOR)
     leftButton.addEventListener
       ( 'click'
       , () => imageSlider.go('<')
@@ -52,7 +54,7 @@ function init_slider
 
 
 
-    const rightButton = document.querySelector('.button-right')
+    const rightButton = document.querySelector(RIGHT_BUTTON_SELECTOR)
     rightButton.addEventListener
       ( 'click'
       , () => imageSlider.go('>')

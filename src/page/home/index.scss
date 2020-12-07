@@ -19,7 +19,7 @@
  * 2. Mixins
  * 3. General
  * 4. Image Slider
- * 5. Button Block
+ * 5. Slider Control
  * 6. Text Slider
  * 7. About Section
  * 8. Misc
@@ -176,10 +176,10 @@ div {
 
 
 /*
- * 5. Button Block
+ * 5. Slider Control
  */
 
-.button-block {
+.slider-control {
   display                  : flex;
   justify-content          : flex-end;
   background-color         : black;
@@ -220,13 +220,13 @@ div {
 
 
 
-.button-left {
+.slider-control__left {
   @include                 button;
 }
 
 
 
-.button-right {
+.slider-control__right {
   @include                 button;
 }
 
