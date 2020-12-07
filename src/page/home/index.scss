@@ -58,6 +58,8 @@ div {
 
 
 .image-slides {
+  position                 : relative;
+
   @media (min-width: breakpoint.$desktop-view) {
     grid-area              : a;
   }
@@ -69,8 +71,12 @@ div {
   @media (min-width: breakpoint.$desktop-view) {
     grid-area              : b;
     display                : flex;
-    align-items            : center;
+    align-items            : flex-start;
     justify-content        : center;
+  }
+
+  @media (min-width: breakpoint.$lg) {
+    align-items            : center;
   }
 }
 
@@ -105,10 +111,6 @@ div {
   }
 
   @media (min-width: breakpoint.$desktop-view) {
-    @include               aspect-ratio.r4to3;
-  }
-
-  @media (min-width: breakpoint.$lg) {
     @include               aspect-ratio.custom(63.4%);
   }
 }
@@ -176,6 +178,9 @@ div {
   @media (min-width: breakpoint.$desktop-view) {
     padding                : 0 $panel-margins--md;
     margin-bottom          : 0;
+  }
+
+  @media (min-width: breakpoint.$lg) {
     margin-top             : 0;
   }
 }
