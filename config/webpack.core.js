@@ -76,13 +76,12 @@ const webpackModule
               }
           }
 
-
-      , { test: /\.(woff|woff2|eot|ttf|otf)$/i
-        , type: 'asset/resource'
-        , generator :
-            { filename: path.join('fonts', '[name][ext]')
-            }
-        }
+        , { test: /\.(woff|woff2|eot|ttf|otf)$/i
+          , type: 'asset/resource'
+          , generator :
+              { filename: path.join('fonts', '[name][ext]')
+              }
+          }
       ]
   }
 

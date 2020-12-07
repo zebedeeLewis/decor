@@ -95,6 +95,14 @@ $panel-margins--sm         : spacing.$b16;
 
 
 
+.navbar-close {
+  @media (min-width: breakpoint.$desktop-view) {
+    display                : none;
+  }
+}
+
+
+
 @mixin nav-item {
   padding-bottom           : $nav-item-vertical-spacing;
   padding-top              : 0;

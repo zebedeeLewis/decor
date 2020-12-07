@@ -28,6 +28,12 @@ $panel-margins--lg       : spacing.$b25;
 
 
 
+div {
+  box-sizing             : border-box;
+}
+
+
+
 /* 0. Styles */
 .no-scroll {
   overflow                 : hidden;
@@ -71,13 +77,13 @@ $panel-margins--lg       : spacing.$b25;
 
 
 .slide-container {
-  position                 : relative;
+  /*position                 : relative;*/
 }
 
 
 
 @mixin slide {
-  display                  : none;
+  width                    : 100%;
 }
 
 
@@ -87,16 +93,15 @@ $panel-margins--lg       : spacing.$b25;
 
 
 
-.image-slide {
+@mixin image-slide {
   @include                 slide;
   @include                 aspect-ratio.square;
 
-  background-image         : url(./image/mobile/hero_1.jpg);
+  background-size          : cover;
+  background-repeat        : no-repeat;
 
   @media (min-width: breakpoint.$sm) {
     @include               aspect-ratio.r21to9;
-
-    background-image       : url(./image/desktop/hero_1.jpg);
   }
 
   @media (min-width: breakpoint.$desktop-view) {
@@ -110,11 +115,50 @@ $panel-margins--lg       : spacing.$b25;
 
 
 
-.slide--active {
-  @include                 slide;
+.image-slide--1 {
+  @include                 image-slide;
 
-  display                  : block;
-  background-size          : cover;
+  background-image         : url(./image/mobile/hero_1.jpg);
+
+  @media (min-width: breakpoint.$sm) {
+    background-image       : url(./image/desktop/hero_1.jpg);
+  }
+}
+
+
+
+.image-slide--2 {
+  @include                 image-slide;
+
+  background-image         : url(./image/mobile/hero_2.jpg);
+
+  @media (min-width: breakpoint.$sm) {
+    background-image       : url(./image/desktop/hero_2.jpg);
+  }
+}
+
+
+
+.image-slide--3 {
+  @include                 image-slide;
+
+  background-image         : url(./image/mobile/hero_3.jpg);
+
+  @media (min-width: breakpoint.$sm) {
+    background-image       : url(./image/desktop/hero_3.jpg);
+  }
+}
+
+
+
+.splide {
+  width                    : 100%;
+}
+
+
+
+.splide__list {
+  width                    : 100%;
 }
 
 
@@ -123,6 +167,7 @@ $panel-margins--lg       : spacing.$b25;
   padding                  : 0 $panel-margins--xs;
   margin-bottom            : spacing.$b12;
   margin-top               : spacing.$b12;
+  width                    : 100%;
 
   @media (min-width: breakpoint.$sm) {
     padding                : 0 $panel-margins--sm;

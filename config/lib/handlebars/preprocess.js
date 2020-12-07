@@ -4,6 +4,16 @@ const path = require('path')
 const LoaderUtils = require('loader-utils')
 
 
+/**
+ * TODO :
+ *   - currently, whenever you are trying to load an image from an
+ *     image tag, the resolver tries to resolve the image page
+ *     relative to the root handlebars template instead of relative
+ *     to the partial in which the tag is located. Set up the loader
+ *     to resolve the partials relative to the child partial instead.
+ */
+
+
 
 function register_as_handlebars_partial
   ( loaderContext

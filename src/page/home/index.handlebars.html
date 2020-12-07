@@ -2,26 +2,17 @@
   <div class="image-slides slide-container">
     {{> [component/Navbar/navbar] }}
 
-    <div
-      class="image-slide slide--active"
-      data-img="./image/mobile/hero_1.jpg"
-      data-lg-img="./image/desktop/hero_1.jpg"
-      data-slide-index=1
-    ></div>
-
-    <div
-      class="image-slide"
-      data-img="./image/desktop/hero_2.jpg"
-      data-lg-img="./image/desktop/hero_2.jpg"
-      data-slide-index=2
-    ></div>
-
-    <div
-      class="image-slide"
-      data-img="./image/mobile/hero_3.jpg"
-      data-lg-img="./image/desktop/hero_3.jpg"
-      data-slide-index=3
-    ></div>
+    <div id="image-slider" class="splide">
+      <div class="splide__slider">
+        <div class="splide__track">
+          <div class="splide__list">
+            <div class="image-slide--1 splide__slide" ></div>
+            <div class="image-slide--2 splide__slide" ></div>
+            <div class="image-slide--3 splide__slide" ></div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 
   <div class="button-block">
@@ -35,73 +26,73 @@
   </div>
 
   <div class="text-slides slide-container">
-    <div
-      class="panel slide--active"
-      data-slide-index=1
-    >
-      <span class="panel__tagline">
-        Discover innovative ways to decorate
-      </span>
-      
-      <div class="panel__content">
-        <p>
-        We provide unmatched quality, comfort, and style for property
-        owners across the country. Our experts combine form and function
-        in bringing your vision to life. Create a room in your own style
-        with our collection and make your property a reflection of you
-        and what you love.
-        </p>
+    <div id="text-slider" class="splide">
+      <div class="splide__slider">
+        <div class="splide__track">
+          <div class="splide__list">
+            <div class="panel splide__slide" >
+              <span class="panel__tagline">
+                Discover innovative ways to decorate
+              </span>
+              
+              <div class="panel__content">
+                <p>
+                We provide unmatched quality, comfort, and style for
+                property owners across the country. Our experts combine
+                form and function in bringing your vision to life.
+                Create a room in your own style with our collection and
+                make your property a reflection of you and what you
+                love.
+                </p>
+              </div>
+              
+              <a class="simple-button" href="#">
+                Shop now <span class="icon-arrow"></span>
+              </a>
+            </div>
+            <div class="panel splide__slide" >
+              <span class="panel__tagline">
+                We are available all across the globe
+              </span>
+              
+              <div class="panel__content">
+                <p>
+                With stores all over the world, it's easy for you to
+                find furniture for your home or place of business.
+                Locally, we’re in most major cities throughout the
+                country. Find the branch nearest you using our store
+                locator. Any questions? Don't hesitate to contact us
+                today.
+                </p>
+              </div>
+              
+              <a class="simple-button" href="#">
+                Shop now <span class="icon-arrow"></span>
+              </a>
+            </div>
+            <div class="panel splide__slide" >
+              <span class="panel__tagline">
+                Manufactured with the best materials
+              </span>
+              
+              <div class="panel__content">
+                <p>
+                Our modern furniture store provide a high level of
+                quality. Our company has invested in advanced technology
+                to ensure that every product is made as perfect and as
+                consistent as possible. With three decades of experience
+                in this industry, we understand what customers want for
+                their home and office.
+                </p>
+              </div>
+              
+              <a class="simple-button" href="#">
+                Shop now <span class="icon-arrow"></span>
+              </a>
+            </div>
+          </div>
+        </div>
       </div>
-      
-      <a class="simple-button" href="#">
-        Shop now <span class="icon-arrow"></span>
-      </a>
-    </div>
-
-    <div
-      class="panel slide"
-      data-slide-index=2
-    >
-      <span class="panel__tagline">
-        We are available all across the globe
-      </span>
-      
-      <div class="panel__content">
-        <p>
-        With stores all over the world, it's easy for you to find
-        furniture for your home or place of business. Locally, we’re in
-        most major cities throughout the country. Find the branch
-        nearest you using our store locator. Any questions? Don't
-        hesitate to contact us today.
-        </p>
-      </div>
-      
-      <a class="simple-button" href="#">
-        Shop now <span class="icon-arrow"></span>
-      </a>
-    </div>
-      
-    <div
-      class="panel slide"
-      data-slide-index=3
-    >
-      <span class="panel__tagline">
-        Manufactured with the best materials
-      </span>
-      
-      <div class="panel__content">
-        <p>
-        Our modern furniture store provide a high level of quality. Our
-        company has invested in advanced technology to ensure that every
-        product is made as perfect and as consistent as possible. With
-        three decades of experience in this industry, we understand what
-        customers want for their home and office.
-        </p>
-      </div>
-      
-      <a class="simple-button" href="#">
-        Shop now <span class="icon-arrow"></span>
-      </a>
     </div>
   </div>
 

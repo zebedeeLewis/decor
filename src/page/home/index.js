@@ -1,5 +1,71 @@
 import './index.scss'
 import * as Navbar from "component/Navbar"
+import Splide from '@splidejs/splide';
+
+
+
+const IMAGE_SLIDER_SELECTOR = '#image-slider'
+const TEXT_SLIDER_SELECTOR = '#text-slider'
+
+
+
+function init_slider
+  ( window
+  ) {
+    const document = window.document
+
+
+    const rootHtmlElement = document.querySelector(IMAGE_SLIDER_SELECTOR)
+
+
+    const imageSlider
+      = new Splide
+          ( IMAGE_SLIDER_SELECTOR
+          , { autoplay   : false
+            , cover      : true
+            , autoWidth  : true
+            , autoHeight : true
+            , type       : 'loop'
+            , arrows     : false
+            , pagination : false
+            }
+          )
+
+
+    const textSlider =
+      new Splide
+        ( TEXT_SLIDER_SELECTOR
+        , { autoWidth  : true
+          , arrows     : false
+          , type       : 'loop'
+          , pagination : false
+          }
+        )
+
+
+    const leftButton = document.querySelector('.button-left')
+    leftButton.addEventListener
+      ( 'click'
+      , () => imageSlider.go('<')
+      )
+
+
+
+    const rightButton = document.querySelector('.button-right')
+    rightButton.addEventListener
+      ( 'click'
+      , () => imageSlider.go('>')
+      )
+
+
+    imageSlider
+      .sync(textSlider.mount())
+      .mount()
+
+    window.slider = imageSlider
+
+  }
+
 
 
 function init
@@ -9,7 +75,10 @@ function init
 
     document.addEventListener
       ( 'DOMContentLoaded'
-      , () => Navbar.init(window, '#navbar')
+      , () => {
+          Navbar.init(window, '#navbar')
+          init_slider(window)
+        }
       )
   }
 
